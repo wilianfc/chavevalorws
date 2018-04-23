@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+function listar() {
+    $.ajax({
+        url: '/api/disciplinas',
+        method: 'GET'
+    }).then(function(data) {
+        $('#tabela').empty();
+        $('#tabela').append('<tr><th>ID</th>' +
+                            '<th>Nome</th>' +
+                            '<th>Matrícula</th>' +
+                            '<th>Área</th></tr>');
+        n = data.length;
+        for (var i=0; i<n; i++) {
+            $('#tabela').append('<tr><td>'+ data[i].id+'</td>' +
+                            '<td>'+ data[i].nome + '</td>' +
+                            '<td>' + data[i].matricula + '</td>' +
+                            '<td>' + data[i].area + '</td></tr>');
+            
+        }
+    });
+}
+
+function criar() {
+    $.ajax({
+        url: '/api/professores',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+           nome: $('#txtNome').val(),
+           matricula: $('#txtMatricula').val(),
+           area: $('#txtArea').val()
+        })
+    }).then(function(data) {
+        $('#txtNome').val('');
+        $('#txtMatricula').val('');
+        $('#txtArea').val('');
+        $('#tabela').append('<tr><td>'+ data.id+'</td>' +
+                            '<td>'+ data.nome + '</td>' +
+                            '<td>' + data.matricula + '</td>' +
+                            '<td>' + data.area + '</td></tr>');
+                        
+    });
+    
+}
+
+function remover() {
+    $.ajax({
+        url: '/api/professores/' + $('#txtId').val(),
+        method: 'DELETE',
+        error: function(xhr, options, error) {
+            $('#txtId').val('');
+            alert(xhr.responseText);
+        }
+    }).then(function() {
+        $('#txtId').val('');
+        listar();
+    });
+}
+</script>
+    
+</head>
+<body>
+
+<h1>Listagem dos Professores</h1>
+
+<p><input type="button" value="Listar" onclick="listar()"></p>
+
+<table border="1" id="tabela">
+</table>
+
+<h1>Criação de um professor</h1>
+
+<p>Nome: <input type="text" id="txtNome"></p>
+<p>Matrícula: <input type="text" id="txtMatricula"></p>
+<p>Área: <input type="text" id="txtArea"></p>
+<p><input type="button" value="Criar" onclick="criar()"></p>
+
+
+<h1>Remoção de um professor</h1>
+<p>ID: <input type="text" id="txtId"> 
+<input type="button" onclick="remover()" value="Remover"></p>
+</body>
+</html>

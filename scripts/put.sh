@@ -1,0 +1,1 @@
+curl -X PUT http://localhost:8080/api/professores/1 -d '{"nome":"Tomaz", "matricula":"1147148", "area":"SR", "contratacao":"2014-01-30"}' -H "Content-Type: application/json"
