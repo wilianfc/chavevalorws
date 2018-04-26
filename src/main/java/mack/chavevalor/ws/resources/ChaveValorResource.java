@@ -1,4 +1,4 @@
-package mack.lp3.ws.resources;
+package mack.chavevalor.ws.resources;
 
 import java.util.Date;
 import java.util.Collections;
@@ -17,11 +17,11 @@ import javax.annotation.security.PermitAll;
 
 @Path("chavevalor")
 @Produces(MediaType.APPLICATION_JSON)
-public class ProfessorResource {
+public class ChaveValorResource {
 
     private Dao<ChaveValor> dao = null;
     
-    public ProfessorResource() {
+    public ChaveValorResource() {
         try {
             ConexaoDb conexao;
             conexao = new ConexaoDb("jdbc:derby:faculdade;create=true", "app", "app");

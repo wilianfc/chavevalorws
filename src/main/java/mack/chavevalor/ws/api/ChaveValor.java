@@ -1,4 +1,4 @@
-package mack.lp3.ws.api;
+package mack.chavevalor.ws.api;
 
 import java.util.Date;
 

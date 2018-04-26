@@ -1,11 +1,11 @@
-package mack.lp3.ws;
+package mack.chavevalor.ws;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.*;
 import javax.validation.constraints.*;
 
-public class ProfessoresConfiguration extends Configuration {
+public class ChaveValorConfiguration extends Configuration {
     @NotEmpty
     private String dateFormat;
 

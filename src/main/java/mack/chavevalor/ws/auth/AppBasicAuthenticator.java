@@ -1,4 +1,4 @@
-package mack.lp3.ws.auth;
+package mack.chavevalor.ws.auth;
 
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;

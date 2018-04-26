@@ -1,4 +1,4 @@
-package mack.lp3.ws.auth;
+package mack.chavevalor.ws.auth;
 
 import java.security.Principal;
 import java.util.Set;

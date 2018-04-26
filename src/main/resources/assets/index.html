@@ -6,20 +6,20 @@
 <script>
 function listar() {
     $.ajax({
-        url: '/api/disciplinas',
+        url: '/api/chavevalor',
         method: 'GET'
     }).then(function(data) {
         $('#tabela').empty();
         $('#tabela').append('<tr><th>ID</th>' +
-                            '<th>Nome</th>' +
-                            '<th>Matrícula</th>' +
-                            '<th>Área</th></tr>');
+                            '<th>DataHora</th>' +
+                            '<th>Chave</th>' +
+                            '<th>Valor</th></tr>');
         n = data.length;
         for (var i=0; i<n; i++) {
             $('#tabela').append('<tr><td>'+ data[i].id+'</td>' +
-                            '<td>'+ data[i].nome + '</td>' +
-                            '<td>' + data[i].matricula + '</td>' +
-                            '<td>' + data[i].area + '</td></tr>');
+                            '<td>'+ data[i].datahora + '</td>' +
+                            '<td>' + data[i].chave + '</td>' +
+                            '<td>' + data[i].valor + '</td></tr>');
             
         }
     });
@@ -27,22 +27,22 @@ function listar() {
 
 function criar() {
     $.ajax({
-        url: '/api/professores',
+        url: '/api/chavevalor',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-           nome: $('#txtNome').val(),
-           matricula: $('#txtMatricula').val(),
-           area: $('#txtArea').val()
+           datahora: $('#txtDataHora').val(),
+           chave: $('#txtChave').val(),
+           valor: $('#txtValor').val()
         })
     }).then(function(data) {
-        $('#txtNome').val('');
-        $('#txtMatricula').val('');
-        $('#txtArea').val('');
+        $('#txtDataHora').val('');
+        $('#txtChave').val('');
+        $('#txtValor').val('');
         $('#tabela').append('<tr><td>'+ data.id+'</td>' +
-                            '<td>'+ data.nome + '</td>' +
-                            '<td>' + data.matricula + '</td>' +
-                            '<td>' + data.area + '</td></tr>');
+                            '<td>'+ data.datahora + '</td>' +
+                            '<td>' + data.chave + '</td>' +
+                            '<td>' + data.valor + '</td></tr>');
                         
     });
     
@@ -50,7 +50,7 @@ function criar() {
 
 function remover() {
     $.ajax({
-        url: '/api/professores/' + $('#txtId').val(),
+        url: '/api/chavevalor/' + $('#txtId').val(),
         method: 'DELETE',
         error: function(xhr, options, error) {
             $('#txtId').val('');
@@ -66,22 +66,22 @@ function remover() {
 </head>
 <body>
 
-<h1>Listagem dos Professores</h1>
+<h1>Listagem</h1>
 
 <p><input type="button" value="Listar" onclick="listar()"></p>
 
 <table border="1" id="tabela">
 </table>
 
-<h1>Criação de um professor</h1>
+<h1>Criação</h1>
 
-<p>Nome: <input type="text" id="txtNome"></p>
-<p>Matrícula: <input type="text" id="txtMatricula"></p>
-<p>Área: <input type="text" id="txtArea"></p>
+<p>DataHora: <input type="text" id="txtDataHora"></p>
+<p>Chave: <input type="text" id="txtChave"></p>
+<p>Valor: <input type="text" id="txtValor"></p>
 <p><input type="button" value="Criar" onclick="criar()"></p>
 
 
-<h1>Remoção de um professor</h1>
+<h1>Remoção</h1>
 <p>ID: <input type="text" id="txtId"> 
 <input type="button" onclick="remover()" value="Remover"></p>
 </body>
