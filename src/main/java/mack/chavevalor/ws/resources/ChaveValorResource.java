@@ -34,13 +34,13 @@ public class ChaveValorResource {
     @GET
     @PermitAll
     public List<ChaveValor> listar() {
-        List<ChaveValor> professores = null;
+        List<ChaveValor> chavesValores = null;
         try {
-            professores = dao.ler();
+            chavesValores = dao.ler();
         } catch(Exception e) {
             e.printStackTrace();
         }
-        return professores;
+        return chavesValores;
 
     }
     
@@ -65,27 +65,30 @@ public class ChaveValorResource {
     @POST
     //@RolesAllowed("ADMIN")
     @PermitAll
-    public ChaveValor criar(ChaveValor professor) {
+    public ChaveValor criar(ChaveValor chaveValor) {
         try {
-            long id = dao.criar(professor);
-            professor.setId(id);
+            if (chaveValor.getDatahora() == -1) {
+                chaveValor.setDatahora(System.currentTimeMillis());
+            }
+            long id = dao.criar(chaveValor);
+            chaveValor.setId(id);
         } catch(Exception e) {
             e.printStackTrace();
         }
 
-        return professor;
+        return chaveValor;
     }
     
     @PUT
     @Path("{id}")
-    public ChaveValor atualizar(@PathParam("id") LongParam id, ChaveValor professor) {
+    public ChaveValor atualizar(@PathParam("id") LongParam id, ChaveValor chaveValor) {
         try {
-            int n = dao.atualizar(professor);
+            int n = dao.atualizar(chaveValor);
         } catch(Exception e) {
             e.printStackTrace();
         }
 
-        return professor;
+        return chaveValor;
     }
     
     @DELETE
@@ -99,7 +102,7 @@ public class ChaveValorResource {
             throw new WebApplicationException("Erro ao tentar apagar!", 500);
         }
         if (n <= 0) {
-            throw new WebApplicationException("Professor com id=" + id.get() + " não encontrado!", 404);
+            throw new WebApplicationException("ChaveValor com id=" + id.get() + " não encontrado!", 404);
         }
 
         return Response.ok().build();
