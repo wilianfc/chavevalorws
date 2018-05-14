@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Mon May 07 21:11:28 UTC 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0163-3c71-e900-00000937f818 
-on database directory /projects/chavevalorws/faculdade with class loader java.net.URLClassLoader@6c17eb48 
-Loaded from file:/home/user/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+Mon May 14 20:51:04 UTC 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0163-606b-bf24-0000159a7958 
+on database directory /projects/chavevalorws/faculdade with class loader sun.misc.Launcher$AppClassLoader@74a14482 
+Loaded from file:/projects/chavevalorws/target/chavevalorws-1.0-SNAPSHOT.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_162-8u162-b12-0ubuntu0.16.04.2-b12
 user.dir=/projects/chavevalorws
