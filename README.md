@@ -17,4 +17,4 @@ How to start the the application
  4. Start application with `mvn exec:java`
  5. Don´t forget to choose to expose the application port (gitpod.io will ask)
  5. To check that your application is running use the url in terminal. The address is like https://8080-f0dfd602-09fd-4034-9d45-3bfb92b9c1df.ws-us1.gitpod.io/
- 6. Use the address https://XXXXXXXXX.gitpod.io/api/chavevalor for test api
+ 6. Use the address https://XXXXXXXXX.gitpod.io/api/chavevalor for API Test
